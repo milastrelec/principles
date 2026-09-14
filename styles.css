@@ -146,7 +146,7 @@ video {
 
 .intro {
   display: grid;
-  background: #141413;
+  background: #000;
   color: #fff;
 }
 
@@ -193,7 +193,7 @@ video {
 
 .principles-overview {
   min-height: 100svh;
-  padding: clamp(38px, 2.6vw, 50px) clamp(42px, 8.33vw, 160px) clamp(54px, 8.1vw, 128px);
+  padding: clamp(18px, 1.6vw, 32px) clamp(42px, 8.33vw, 160px) clamp(54px, 8.1vw, 128px);
   background: #000;
   color: #fff;
 }
@@ -213,7 +213,7 @@ video {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   column-gap: clamp(36px, 9vw, 190px);
   row-gap: clamp(54px, 9vh, 98px);
-  margin-top: clamp(34px, 5.4vh, 58px);
+  margin-top: 0;
 }
 
 .principle-card {
