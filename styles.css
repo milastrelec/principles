@@ -229,8 +229,8 @@ video {
   opacity: 1;
   transform: translate3d(0, 0, 0) scale(1);
   transition:
-    opacity 2200ms cubic-bezier(0.16, 1, 0.3, 1),
-    transform 2200ms cubic-bezier(0.16, 1, 0.3, 1);
+    opacity 2800ms cubic-bezier(0.19, 1, 0.22, 1),
+    transform 2800ms cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 .principles-overview.reveal-ready.is-visible .principle-card:nth-child(1) {
@@ -245,7 +245,7 @@ video {
   transition-delay: 640ms;
 }
 
-.principles-overview.reveal-ready.is-visible .principle-card:nth-child(6) {
+.principles-overview.reveal-ready.is-visible .principle-card:nth-child(4) {
   transition-delay: 960ms;
 }
 
@@ -253,7 +253,7 @@ video {
   transition-delay: 1280ms;
 }
 
-.principles-overview.reveal-ready.is-visible .principle-card:nth-child(4) {
+.principles-overview.reveal-ready.is-visible .principle-card:nth-child(6) {
   transition-delay: 1600ms;
 }
 
