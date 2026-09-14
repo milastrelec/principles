@@ -194,7 +194,7 @@ video {
 .principles-overview {
   min-height: 100svh;
   padding: clamp(38px, 2.6vw, 50px) clamp(42px, 8.33vw, 160px) clamp(54px, 8.1vw, 128px);
-  background: #141413;
+  background: #000;
   color: #fff;
 }
 
