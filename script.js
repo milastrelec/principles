@@ -2,6 +2,7 @@ const stage = document.querySelector(".horizontal-stage");
 const track = document.querySelector(".horizontal-track");
 const cards = document.querySelectorAll(".principle-card");
 const parallaxPanels = document.querySelectorAll("[data-parallax]");
+const principlesOverview = document.querySelector(".principles-overview");
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
 let ticking = false;
@@ -78,6 +79,22 @@ cards.forEach((card) => {
     video.currentTime = 0;
   });
 });
+
+if (principlesOverview && !reduceMotion.matches) {
+  principlesOverview.classList.add("reveal-ready");
+
+  const overviewObserver = new IntersectionObserver(
+    ([entry], observer) => {
+      if (!entry.isIntersecting) return;
+
+      principlesOverview.classList.add("is-visible");
+      observer.disconnect();
+    },
+    { threshold: 0.36 }
+  );
+
+  overviewObserver.observe(principlesOverview);
+}
 
 window.addEventListener("scroll", requestScrollEffectsUpdate, { passive: true });
 window.addEventListener("resize", requestScrollEffectsUpdate);

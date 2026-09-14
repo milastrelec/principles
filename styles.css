@@ -220,6 +220,43 @@ video {
   min-width: 0;
 }
 
+.principles-overview.reveal-ready .principle-card {
+  opacity: 0;
+  transform: translate3d(0, 28px, 0) scale(0.985);
+}
+
+.principles-overview.reveal-ready.is-visible .principle-card {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+  transition:
+    opacity 760ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 760ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.principles-overview.reveal-ready.is-visible .principle-card:nth-child(1) {
+  transition-delay: 0ms;
+}
+
+.principles-overview.reveal-ready.is-visible .principle-card:nth-child(2) {
+  transition-delay: 120ms;
+}
+
+.principles-overview.reveal-ready.is-visible .principle-card:nth-child(3) {
+  transition-delay: 240ms;
+}
+
+.principles-overview.reveal-ready.is-visible .principle-card:nth-child(6) {
+  transition-delay: 360ms;
+}
+
+.principles-overview.reveal-ready.is-visible .principle-card:nth-child(5) {
+  transition-delay: 480ms;
+}
+
+.principles-overview.reveal-ready.is-visible .principle-card:nth-child(4) {
+  transition-delay: 600ms;
+}
+
 .emblem {
   position: relative;
   width: min(14vw, 268px);
@@ -569,9 +606,11 @@ details ul {
   [data-parallax] .overview-heading,
   [data-parallax] .principle-grid,
   [data-parallax] .faq-inner,
-  .hero-video {
+  .hero-video,
+  .principles-overview.reveal-ready .principle-card {
     transform: none !important;
     opacity: 1 !important;
+    transition: none !important;
   }
 }
 
