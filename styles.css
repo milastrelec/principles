@@ -259,32 +259,32 @@ video {
 
 .emblem {
   position: relative;
-  width: min(14vw, 268px);
-  height: min(13.125vw, 252px);
-  min-width: 154px;
-  min-height: 164px;
+  width: min(18.2vw, 348px);
+  height: min(17.063vw, 328px);
+  min-width: 200px;
+  min-height: 213px;
   overflow: hidden;
   background: transparent;
 }
 
 .principle-card:nth-child(1) .emblem {
-  width: min(12.329vw, 237px);
+  width: min(16.028vw, 308px);
 }
 
 .principle-card:nth-child(3) .emblem {
-  width: min(12.69vw, 244px);
+  width: min(16.497vw, 317px);
 }
 
 .principle-card:nth-child(4) .emblem {
-  width: min(14.12vw, 271px);
+  width: min(18.356vw, 352px);
 }
 
 .principle-card:nth-child(5) .emblem {
-  width: min(16.24vw, 312px);
+  width: min(21.112vw, 406px);
 }
 
 .principle-card:nth-child(6) .emblem {
-  width: min(13.47vw, 259px);
+  width: min(17.511vw, 337px);
 }
 
 .emblem img,
@@ -674,8 +674,8 @@ details ul {
   }
 
   .emblem {
-    width: 42vw;
-    height: 42vw;
+    width: min(54.6vw, calc((100vw - 54px) / 2));
+    height: min(54.6vw, calc((100vw - 54px) / 2));
     min-width: 0;
     min-height: 0;
   }
@@ -714,8 +714,8 @@ details ul {
   }
 
   .emblem {
-    width: 68vw;
-    height: 68vw;
+    width: min(88.4vw, calc(100vw - 36px));
+    height: min(88.4vw, calc(100vw - 36px));
   }
 
   .horizontal-stage {
