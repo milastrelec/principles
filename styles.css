@@ -229,8 +229,8 @@ video {
   opacity: 1;
   transform: translate3d(0, 0, 0) scale(1);
   transition:
-    opacity 760ms cubic-bezier(0.22, 1, 0.36, 1),
-    transform 760ms cubic-bezier(0.22, 1, 0.36, 1);
+    opacity 1100ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 1100ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .principles-overview.reveal-ready.is-visible .principle-card:nth-child(1) {
@@ -238,23 +238,23 @@ video {
 }
 
 .principles-overview.reveal-ready.is-visible .principle-card:nth-child(2) {
-  transition-delay: 120ms;
+  transition-delay: 160ms;
 }
 
 .principles-overview.reveal-ready.is-visible .principle-card:nth-child(3) {
-  transition-delay: 240ms;
+  transition-delay: 320ms;
 }
 
 .principles-overview.reveal-ready.is-visible .principle-card:nth-child(6) {
-  transition-delay: 360ms;
-}
-
-.principles-overview.reveal-ready.is-visible .principle-card:nth-child(5) {
   transition-delay: 480ms;
 }
 
+.principles-overview.reveal-ready.is-visible .principle-card:nth-child(5) {
+  transition-delay: 640ms;
+}
+
 .principles-overview.reveal-ready.is-visible .principle-card:nth-child(4) {
-  transition-delay: 600ms;
+  transition-delay: 800ms;
 }
 
 .emblem {

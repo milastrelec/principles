@@ -85,12 +85,14 @@ if (principlesOverview && !reduceMotion.matches) {
 
   const overviewObserver = new IntersectionObserver(
     ([entry], observer) => {
-      if (!entry.isIntersecting) return;
+      const reachedOverview =
+        entry.isIntersecting && entry.boundingClientRect.top <= window.innerHeight * 0.62;
+      if (!reachedOverview) return;
 
       principlesOverview.classList.add("is-visible");
       observer.disconnect();
     },
-    { threshold: 0.36 }
+    { threshold: 0.18, rootMargin: "0px 0px -18% 0px" }
   );
 
   overviewObserver.observe(principlesOverview);
