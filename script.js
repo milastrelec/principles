@@ -15,7 +15,7 @@ function clamp(value, min, max) {
 function updateDetailIntro(progress) {
   if (!firstDetail || reduceMotion.matches) return;
 
-  const localProgress = clamp(progress / 0.16, 0, 1);
+  const localProgress = clamp((progress + 0.08) / 0.2, 0, 1);
   const eased = 1 - Math.pow(1 - localProgress, 3);
   const enter = 1 - eased;
 
