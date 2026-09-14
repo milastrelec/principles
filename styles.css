@@ -259,32 +259,32 @@ video {
 
 .emblem {
   position: relative;
-  width: min(18.2vw, 348px);
-  height: min(17.063vw, 328px);
-  min-width: 200px;
-  min-height: 213px;
+  width: min(20.02vw, 383px);
+  height: min(18.769vw, 361px);
+  min-width: 220px;
+  min-height: 234px;
   overflow: hidden;
   background: transparent;
 }
 
 .principle-card:nth-child(1) .emblem {
-  width: min(16.028vw, 308px);
+  width: min(17.631vw, 339px);
 }
 
 .principle-card:nth-child(3) .emblem {
-  width: min(16.497vw, 317px);
+  width: min(18.147vw, 349px);
 }
 
 .principle-card:nth-child(4) .emblem {
-  width: min(18.356vw, 352px);
+  width: min(20.192vw, 387px);
 }
 
 .principle-card:nth-child(5) .emblem {
-  width: min(21.112vw, 406px);
+  width: min(23.223vw, 447px);
 }
 
 .principle-card:nth-child(6) .emblem {
-  width: min(17.511vw, 337px);
+  width: min(19.262vw, 371px);
 }
 
 .emblem img,
@@ -674,8 +674,8 @@ details ul {
   }
 
   .emblem {
-    width: min(54.6vw, calc((100vw - 54px) / 2));
-    height: min(54.6vw, calc((100vw - 54px) / 2));
+    width: min(60.06vw, calc((100vw - 54px) / 2));
+    height: min(60.06vw, calc((100vw - 54px) / 2));
     min-width: 0;
     min-height: 0;
   }
@@ -714,8 +714,8 @@ details ul {
   }
 
   .emblem {
-    width: min(88.4vw, calc(100vw - 36px));
-    height: min(88.4vw, calc(100vw - 36px));
+    width: min(97.24vw, calc(100vw - 36px));
+    height: min(97.24vw, calc(100vw - 36px));
   }
 
   .horizontal-stage {
