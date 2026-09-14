@@ -96,6 +96,27 @@ video {
   overflow: clip;
 }
 
+[data-parallax] {
+  --panel-parallax-y: 0px;
+  --panel-content-y: 0px;
+  --panel-content-scale: 1;
+  --panel-content-opacity: 1;
+}
+
+[data-parallax] .panel-inner,
+[data-parallax] .overview-heading,
+[data-parallax] .principle-grid,
+[data-parallax] .faq-inner {
+  transform: translate3d(0, var(--panel-content-y), 0) scale(var(--panel-content-scale));
+  opacity: var(--panel-content-opacity);
+  transform-origin: 50% 50%;
+  will-change: transform, opacity;
+}
+
+.hero-video {
+  will-change: transform;
+}
+
 .panel-dark {
   background: var(--black);
   color: var(--white);
@@ -542,6 +563,15 @@ details ul {
 
   .horizontal-track {
     transition: none;
+  }
+
+  [data-parallax] .panel-inner,
+  [data-parallax] .overview-heading,
+  [data-parallax] .principle-grid,
+  [data-parallax] .faq-inner,
+  .hero-video {
+    transform: none !important;
+    opacity: 1 !important;
   }
 }
 
