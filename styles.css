@@ -1,0 +1,649 @@
+@font-face {
+  font-family: "Aeroport";
+  src: url("fonts/Aeroport/Aeroport.ttf") format("truetype");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Aeroport";
+  src: url("fonts/Aeroport/Aeroport-Bold.ttf") format("truetype");
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "Aeroport Mono";
+  src: url("fonts/Aeroport/AeroportMono.ttf") format("truetype");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Panama Monospace";
+  src: url("fonts/Panama/PanamaMonospaceRegular1.20.woff") format("woff");
+  font-weight: 400;
+}
+
+:root {
+  --black: #030303;
+  --white: #f3f1ec;
+  --paper: #efede7;
+  --ink: #090909;
+  --muted: rgba(9, 9, 9, 0.62);
+  --edge: rgba(9, 9, 9, 0.16);
+  --header: clamp(42px, 9.7vw, 187px);
+  --body: clamp(20px, 2.05vw, 40px);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--black);
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  font-family: "Aeroport", Arial, sans-serif;
+  background: var(--black);
+  letter-spacing: 0;
+}
+
+img,
+video {
+  display: block;
+}
+
+.site-header {
+  position: fixed;
+  z-index: 30;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: clamp(18px, 2.6vw, 50px);
+  color: var(--white);
+  mix-blend-mode: difference;
+  pointer-events: none;
+}
+
+.brand {
+  pointer-events: auto;
+  color: currentColor;
+  font-family: "Aeroport Mono", "Aeroport", Arial, sans-serif;
+  font-size: clamp(14px, 1.25vw, 24px);
+  line-height: 1;
+  text-decoration: none;
+}
+
+.brand-logo {
+  display: block;
+  width: clamp(126px, 22.96vw, 441px);
+  height: auto;
+}
+
+.brand-logo img {
+  width: 100%;
+  height: auto;
+}
+
+.panel {
+  position: relative;
+  min-height: 100svh;
+  overflow: clip;
+}
+
+.panel-dark {
+  background: var(--black);
+  color: var(--white);
+}
+
+.panel-light {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.panel-inner {
+  position: relative;
+  min-height: 100svh;
+  padding: clamp(42px, 3.2vw, 64px);
+}
+
+.hero {
+  display: grid;
+  place-items: stretch;
+}
+
+.hero-video {
+  width: 100%;
+  height: 100svh;
+  object-fit: cover;
+}
+
+.intro {
+  display: grid;
+  background: #141413;
+  color: #fff;
+}
+
+.intro-logo {
+  position: absolute;
+  top: 30.37svh;
+  left: 50%;
+  width: min(49.32vw, 947px);
+  height: auto;
+  transform: translateX(-50%);
+}
+
+.intro h1 {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  width: calc(100vw - 84px);
+  max-width: 1828px;
+  color: #f8f6f2;
+  font-family: "Panama Monospace", monospace;
+  font-size: clamp(72px, 10.833vw, 208px);
+  font-weight: 400;
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.intro p {
+  position: absolute;
+  z-index: 1;
+  left: 18.6vw;
+  right: 18.6vw;
+  bottom: 50px;
+  margin: 0;
+  color: #fff;
+  font-family: "Aeroport Mono", monospace;
+  font-size: clamp(22px, 1.667vw, 32px);
+  line-height: 1.25;
+  letter-spacing: 0;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.principles-overview {
+  min-height: 100svh;
+  padding: clamp(38px, 2.6vw, 50px) clamp(42px, 8.33vw, 160px) clamp(54px, 8.1vw, 128px);
+  background: #141413;
+  color: #fff;
+}
+
+.overview-heading {
+  font-family: "Aeroport Mono", "Aeroport", Arial, sans-serif;
+  color: #fff;
+  font-size: clamp(24px, 2.083vw, 40px);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.principle-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  column-gap: clamp(36px, 9vw, 190px);
+  row-gap: clamp(54px, 9vh, 98px);
+  margin-top: clamp(64px, 7.6vh, 88px);
+}
+
+.principle-card {
+  min-width: 0;
+}
+
+.emblem {
+  position: relative;
+  width: min(14vw, 268px);
+  height: min(13.125vw, 252px);
+  min-width: 154px;
+  min-height: 164px;
+  overflow: hidden;
+  background: transparent;
+}
+
+.principle-card:nth-child(1) .emblem {
+  width: min(12.329vw, 237px);
+}
+
+.principle-card:nth-child(3) .emblem {
+  width: min(12.69vw, 244px);
+}
+
+.principle-card:nth-child(4) .emblem {
+  width: min(14.12vw, 271px);
+}
+
+.principle-card:nth-child(5) .emblem {
+  width: min(16.24vw, 312px);
+}
+
+.principle-card:nth-child(6) .emblem {
+  width: min(13.47vw, 259px);
+}
+
+.emblem img,
+.emblem video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.emblem video {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 180ms ease;
+}
+
+.principle-card:hover video,
+.principle-card:focus-within video {
+  opacity: 1;
+}
+
+.principle-card h2 {
+  margin: clamp(16px, 1.5vw, 28px) 0 0;
+  color: #fff;
+  font-family: "Aeroport Mono", monospace;
+  font-size: clamp(22px, 1.667vw, 32px);
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.horizontal-stage {
+  height: 600svh;
+  background: var(--black);
+}
+
+.horizontal-track {
+  position: sticky;
+  top: 0;
+  display: flex;
+  width: 600vw;
+  height: 100svh;
+  will-change: transform;
+}
+
+.detail-slide {
+  position: relative;
+  width: 100vw;
+  height: 100svh;
+  flex: 0 0 100vw;
+  overflow: hidden;
+}
+
+.detail-slide > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.detail-slide::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.08);
+  pointer-events: none;
+}
+
+.detail-shade {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(180deg, #000 0%, rgba(0, 0, 0, 0.1) 100%);
+}
+
+.detail-shade.top {
+  top: -20svh;
+  height: 54svh;
+}
+
+.detail-shade.bottom {
+  bottom: -26svh;
+  height: 55svh;
+  background: linear-gradient(0deg, #000 0%, rgba(0, 0, 0, 0) 100%);
+}
+
+.detail-slide h2,
+.detail-slide p {
+  position: absolute;
+  z-index: 2;
+  margin: 0;
+  color: var(--ink);
+  font-weight: 400;
+}
+
+.detail-slide h2 {
+  top: 49px;
+  left: 42px;
+  right: 50px;
+  color: #f8f6f2;
+  font-family: "Panama Monospace", monospace;
+  font-size: clamp(72px, 10.833vw, 208px);
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.detail-slide p {
+  left: 18.594vw;
+  right: 18.594vw;
+  bottom: 50px;
+  color: #fff;
+  font-family: "Aeroport Mono", monospace;
+  font-size: clamp(22px, 1.667vw, 32px);
+  line-height: 1.25;
+  letter-spacing: 0;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.detail-1 {
+  background: #141413;
+}
+
+.detail-1 > img {
+  top: 1.574svh;
+  left: -5.615vw;
+  width: 111.23vw;
+  height: 111.67svh;
+  object-fit: cover;
+}
+
+.detail-1::after {
+  display: none;
+}
+
+.detail-1 .detail-shade.top {
+  top: -47.59svh;
+  height: 86.76svh;
+  background: linear-gradient(180deg, #f8f6f2 0%, rgba(248, 246, 242, 0) 100%);
+}
+
+.detail-2 > img {
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100svh;
+  object-fit: cover;
+}
+
+.detail-2 .detail-shade.top {
+  top: -49.167svh;
+  height: 92.5svh;
+}
+
+.detail-2 .detail-shade.bottom,
+.detail-3 .detail-shade.bottom {
+  top: 71.574svh;
+  bottom: auto;
+  height: 66.759svh;
+}
+
+.detail-2 p {
+  bottom: 50px;
+}
+
+.detail-3 > img {
+  top: 0;
+  left: 0.195vw;
+  width: 99.609vw;
+  height: 100svh;
+  object-fit: cover;
+}
+
+.detail-3 .detail-shade.bottom {
+  top: 71.574svh;
+}
+
+.detail-4 > img {
+  top: -1.852svh;
+  left: 0.208vw;
+  width: 99.583vw;
+  height: 111.852svh;
+  object-fit: cover;
+}
+
+.detail-4 .detail-shade.top {
+  top: -10.556svh;
+  height: 49.722svh;
+}
+
+.detail-4 p {
+  left: 18.958vw;
+  right: 18.958vw;
+}
+
+.detail-5 > img {
+  top: 0;
+  left: 0.208vw;
+  width: 99.583vw;
+  height: 115.093svh;
+  object-fit: cover;
+}
+
+.detail-5 .detail-shade.top {
+  top: -19.63svh;
+  height: 60.185svh;
+}
+
+.detail-5 p {
+  left: 18.385vw;
+  right: 18.802vw;
+}
+
+.detail-6 > img {
+  top: -5.738svh;
+  left: -5.521vw;
+  width: 111.042vw;
+  height: 111.477svh;
+  object-fit: cover;
+}
+
+.detail-6 .detail-shade.top {
+  top: -19.63svh;
+  height: 42.5svh;
+}
+
+.detail-6 p {
+  bottom: 50px;
+}
+
+.faq {
+  min-height: 100svh;
+  padding: clamp(42px, 3.2vw, 64px);
+}
+
+.faq-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: clamp(42px, 7vw, 132px);
+  min-height: calc(100svh - clamp(84px, 6.4vw, 128px));
+  align-items: start;
+}
+
+.faq h2 {
+  margin: 0;
+  font-family: "Panama Monospace", monospace;
+  font-size: clamp(72px, 10.833vw, 208px);
+  font-weight: 400;
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+}
+
+.faq-list {
+  padding-top: clamp(20px, 4.2vw, 80px);
+}
+
+details {
+  border-top: 1px solid var(--edge);
+  padding: clamp(20px, 2vw, 34px) 0;
+}
+
+details:last-child {
+  border-bottom: 1px solid var(--edge);
+}
+
+summary {
+  cursor: pointer;
+  list-style: none;
+  font-size: clamp(24px, 2.1vw, 40px);
+  line-height: 1.05;
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+summary::after {
+  content: "+";
+  float: right;
+  margin-left: 24px;
+}
+
+details[open] summary::after {
+  content: "−";
+}
+
+details p,
+details li {
+  color: var(--muted);
+  font-size: clamp(18px, 1.45vw, 28px);
+  line-height: 1.25;
+}
+
+details p {
+  margin: clamp(18px, 1.4vw, 26px) 0 0;
+}
+
+details ul {
+  margin: clamp(18px, 1.4vw, 26px) 0 0;
+  padding-left: 1.1em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .horizontal-track {
+    transition: none;
+  }
+}
+
+@media (max-width: 900px) {
+  :root {
+    --header: clamp(56px, 18vw, 120px);
+    --body: clamp(20px, 6.1vw, 34px);
+  }
+
+  .site-header {
+    padding: 18px;
+  }
+
+  .panel-inner,
+  .principles-overview,
+  .faq {
+    padding: 24px 18px;
+  }
+
+  .intro-logo {
+    top: 35svh;
+    width: 86vw;
+    font-size: clamp(90px, 31vw, 170px);
+  }
+
+  .intro p,
+  .detail-slide p {
+    left: 18px;
+    right: 18px;
+    bottom: 30px;
+  }
+
+  .principle-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 18px;
+    row-gap: 34px;
+    margin-top: 72px;
+  }
+
+  .emblem {
+    width: 42vw;
+    height: 42vw;
+    min-width: 0;
+    min-height: 0;
+  }
+
+  .principle-card h2 {
+    font-size: clamp(19px, 5vw, 28px);
+  }
+
+  .detail-slide h2 {
+    left: 18px;
+    right: 18px;
+    top: 64px;
+  }
+
+  .detail-shade.top {
+    height: 48svh;
+  }
+
+  .detail-shade.bottom {
+    height: 50svh;
+  }
+
+  .faq-inner {
+    display: block;
+    min-height: auto;
+  }
+
+  .faq-list {
+    padding-top: 64px;
+  }
+}
+
+@media (max-width: 560px) {
+  .principle-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .emblem {
+    width: 68vw;
+    height: 68vw;
+  }
+
+  .horizontal-stage {
+    height: auto;
+  }
+
+  .horizontal-track {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: auto;
+    transform: none !important;
+  }
+
+  .detail-slide {
+    width: 100%;
+    min-height: 100svh;
+  }
+
+  .detail-slide p {
+    font-size: clamp(19px, 5.8vw, 28px);
+  }
+}
