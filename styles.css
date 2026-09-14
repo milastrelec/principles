@@ -213,7 +213,7 @@ video {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   column-gap: clamp(36px, 9vw, 190px);
   row-gap: clamp(54px, 9vh, 98px);
-  margin-top: clamp(64px, 7.6vh, 88px);
+  margin-top: clamp(34px, 5.4vh, 58px);
 }
 
 .principle-card {
