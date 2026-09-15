@@ -4,6 +4,7 @@ const cards = document.querySelectorAll(".principle-card");
 const parallaxPanels = document.querySelectorAll("[data-parallax]");
 const principlesOverview = document.querySelector(".principles-overview");
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+const canHover = window.matchMedia("(hover: hover) and (pointer: fine)");
 
 let ticking = false;
 
@@ -70,6 +71,8 @@ cards.forEach((card) => {
   if (!video) return;
 
   card.addEventListener("mouseenter", () => {
+    card.classList.remove("is-easter-active");
+    video.loop = true;
     video.currentTime = 0;
     video.play().catch(() => {});
   });
@@ -79,6 +82,29 @@ cards.forEach((card) => {
     video.currentTime = 0;
   });
 });
+
+function playSecondPrincipleEasterEgg() {
+  if (reduceMotion.matches || !canHover.matches) return;
+
+  const card = cards[1];
+  const video = card?.querySelector("video");
+  if (!card || !video || card.matches(":hover")) return;
+
+  card.classList.add("is-easter-active");
+  video.loop = false;
+  video.currentTime = 0;
+
+  const finish = () => {
+    video.pause();
+    video.currentTime = 0;
+    video.loop = true;
+    card.classList.remove("is-easter-active");
+    video.removeEventListener("ended", finish);
+  };
+
+  video.addEventListener("ended", finish, { once: true });
+  video.play().catch(finish);
+}
 
 if (principlesOverview && !reduceMotion.matches) {
   principlesOverview.classList.add("reveal-ready");
@@ -90,6 +116,10 @@ if (principlesOverview && !reduceMotion.matches) {
       if (!reachedOverview) return;
 
       principlesOverview.classList.add("is-visible");
+      window.setTimeout(() => {
+        playSecondPrincipleEasterEgg();
+        window.setInterval(playSecondPrincipleEasterEgg, 180000);
+      }, 4600);
       observer.disconnect();
     },
     { threshold: 0.18, rootMargin: "0px 0px -18% 0px" }

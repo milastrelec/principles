@@ -310,7 +310,8 @@ video {
 }
 
 .principle-card:hover video,
-.principle-card:focus-within video {
+.principle-card:focus-within video,
+.principle-card.is-easter-active video {
   opacity: 1;
 }
 
