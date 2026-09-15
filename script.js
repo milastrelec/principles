@@ -27,7 +27,7 @@ function setDetailIndex(index) {
 
   currentDetailIndex = clamp(index, 0, detailSlides.length - 1);
   if (detailCounter) {
-    detailCounter.textContent = `${String(currentDetailIndex + 1).padStart(2, "0")} / ${String(detailSlides.length).padStart(2, "0")}`;
+    detailCounter.textContent = `${currentDetailIndex + 1} / ${detailSlides.length}`;
   }
 
   detailPrev?.toggleAttribute("disabled", currentDetailIndex === 0);
