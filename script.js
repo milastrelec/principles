@@ -3,36 +3,12 @@ const track = document.querySelector(".horizontal-track");
 const cards = document.querySelectorAll(".principle-card");
 const parallaxPanels = document.querySelectorAll("[data-parallax]");
 const principlesOverview = document.querySelector(".principles-overview");
-const detailSlides = document.querySelectorAll(".detail-slide");
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
 let ticking = false;
 
 function clamp(value, min, max) {
   return Math.min(Math.max(value, min), max);
-}
-
-function updateDetailSlides(progress) {
-  if (!detailSlides.length || reduceMotion.matches) return;
-
-  const slideCount = detailSlides.length;
-  const position = progress * (slideCount - 1);
-
-  detailSlides.forEach((slide, index) => {
-    const delta = index - position;
-    const clampedDelta = clamp(delta, -1.25, 1.25);
-    const presence = 1 - clamp(Math.abs(delta), 0, 1);
-    const easedPresence = 1 - Math.pow(1 - presence, 3);
-
-    slide.style.setProperty("--slide-presence", easedPresence.toFixed(4));
-    slide.style.setProperty("--slide-drift", clampedDelta.toFixed(4));
-    slide.style.setProperty("--slide-bg-x", `${(-70 * clampedDelta).toFixed(2)}px`);
-    slide.style.setProperty("--slide-bg-y", `${(18 * Math.abs(clampedDelta)).toFixed(2)}px`);
-    slide.style.setProperty("--slide-title-x", `${(110 * clampedDelta).toFixed(2)}px`);
-    slide.style.setProperty("--slide-title-y", `${(-52 * Math.abs(clampedDelta)).toFixed(2)}px`);
-    slide.style.setProperty("--slide-copy-x", `${(-74 * clampedDelta).toFixed(2)}px`);
-    slide.style.setProperty("--slide-copy-y", `${(54 * Math.abs(clampedDelta)).toFixed(2)}px`);
-  });
 }
 
 function updateHorizontalScroll() {
@@ -44,7 +20,6 @@ function updateHorizontalScroll() {
   const distance = track.scrollWidth - window.innerWidth;
 
   track.style.transform = `translate3d(${-distance * progress}px, 0, 0)`;
-  updateDetailSlides(progress);
 }
 
 function updateParallax() {
