@@ -267,10 +267,9 @@ video {
 .emblem {
   position: relative;
   width: min(20.02vw, 383px);
-  aspect-ratio: 1;
-  height: auto;
+  height: min(20.02vw, 383px);
   min-width: 220px;
-  min-height: 0;
+  min-height: 220px;
   overflow: hidden;
   background: transparent;
 }
