@@ -179,6 +179,11 @@ video {
   transform: translateX(-50%);
 }
 
+.intro-logo-thread {
+  top: 0;
+  width: min(88.78vw, 1705px);
+}
+
 .intro h1 {
   position: relative;
   z-index: 1;
@@ -669,6 +674,11 @@ details ul {
   .intro-logo {
     top: 35svh;
     width: 86vw;
+  }
+
+  .intro-logo-thread {
+    top: 0;
+    width: 154.8vw;
   }
 
   .intro p,
