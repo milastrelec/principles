@@ -464,7 +464,7 @@ video {
 
 .detail-controls {
   position: fixed;
-  z-index: 12;
+  z-index: 20;
   right: clamp(18px, 2.6vw, 50px);
   bottom: clamp(18px, 2.6vw, 50px);
   display: flex;
@@ -484,9 +484,9 @@ video {
   width: clamp(44px, 3.75vw, 72px);
   height: clamp(44px, 3.75vw, 72px);
   place-items: center;
-  border: 1px solid rgba(248, 246, 242, 0.72);
+  border: 1px solid rgba(248, 246, 242, 0.9);
   border-radius: 999px;
-  background: rgba(0, 0, 0, 0.28);
+  background: rgba(0, 0, 0, 0.54);
   color: #f8f6f2;
   font-family: "Aeroport Mono", monospace;
   font-size: clamp(20px, 1.8vw, 34px);
