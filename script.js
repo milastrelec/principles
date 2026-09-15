@@ -34,15 +34,6 @@ function setDetailIndex(index) {
   detailNext?.toggleAttribute("disabled", currentDetailIndex === detailSlides.length - 1);
 }
 
-function getDesktopDetailIndex() {
-  if (!stage || !detailSlides.length) return 0;
-
-  const rect = stage.getBoundingClientRect();
-  const max = stage.offsetHeight - window.innerHeight;
-  const progress = max > 0 ? clamp(-rect.top / max, 0, 1) : 0;
-  return Math.round(progress * (detailSlides.length - 1));
-}
-
 function getAdaptiveDetailIndex() {
   if (!track || !detailSlides.length) return 0;
 
@@ -88,10 +79,11 @@ function updateHorizontalScroll() {
   const rect = stage.getBoundingClientRect();
   const max = stage.offsetHeight - window.innerHeight;
   const progress = max > 0 ? clamp(-rect.top / max, 0, 1) : 0;
-  const distance = track.scrollWidth - window.innerWidth;
+  const nextIndex = Math.round(progress * (detailSlides.length - 1));
+  const distance = window.innerWidth * nextIndex;
 
-  track.style.transform = `translate3d(${-distance * progress}px, 0, 0)`;
-  setDetailIndex(Math.round(progress * (detailSlides.length - 1)));
+  track.style.transform = `translate3d(${-distance}px, 0, 0)`;
+  setDetailIndex(nextIndex);
 }
 
 function updateParallax() {

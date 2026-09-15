@@ -339,6 +339,7 @@ video {
   width: 600vw;
   height: 100svh;
   will-change: transform;
+  transition: transform 620ms cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 .detail-slide {
@@ -737,6 +738,7 @@ details ul {
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
     transform: none !important;
+    transition: none;
   }
 
   .horizontal-track::-webkit-scrollbar {
