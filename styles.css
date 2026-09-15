@@ -654,8 +654,9 @@ details ul {
   }
 
   .principle-grid {
-    grid-template-columns: 1fr;
-    row-gap: 46px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 16px;
+    row-gap: 38px;
   }
 
   .emblem,
@@ -664,7 +665,7 @@ details ul {
   .principle-card:nth-child(4) .emblem,
   .principle-card:nth-child(5) .emblem,
   .principle-card:nth-child(6) .emblem {
-    width: min(74vw, 320px);
+    width: min(42vw, calc((100vw - 52px) / 2));
     height: auto;
   }
 
