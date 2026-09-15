@@ -3,23 +3,88 @@ const track = document.querySelector(".horizontal-track");
 const cards = document.querySelectorAll(".principle-card");
 const parallaxPanels = document.querySelectorAll("[data-parallax]");
 const principlesOverview = document.querySelector(".principles-overview");
+const detailSlides = document.querySelectorAll(".detail-slide");
+const detailControls = document.querySelector(".detail-controls");
+const detailButtons = document.querySelectorAll("[data-detail-direction]");
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
 let ticking = false;
+let currentDetailIndex = 0;
+let snapTimer;
+let isSnapping = false;
 
 function clamp(value, min, max) {
   return Math.min(Math.max(value, min), max);
 }
 
-function updateHorizontalScroll() {
-  if (!stage || !track || window.matchMedia("(max-width: 560px)").matches) return;
+function getDetailScrollState() {
+  if (!stage || !track || window.matchMedia("(max-width: 560px)").matches) return null;
 
   const rect = stage.getBoundingClientRect();
   const max = stage.offsetHeight - window.innerHeight;
   const progress = clamp(-rect.top / max, 0, 1);
   const distance = track.scrollWidth - window.innerWidth;
+  const slideCount = detailSlides.length || 1;
+  const index = Math.round(progress * (slideCount - 1));
+  const isActive = rect.top <= 1 && rect.bottom >= window.innerHeight - 1;
 
-  track.style.transform = `translate3d(${-distance * progress}px, 0, 0)`;
+  return { rect, max, progress, distance, slideCount, index, isActive };
+}
+
+function updateDetailControls(state) {
+  if (!detailControls || !state) return;
+
+  detailControls.classList.toggle("is-visible", state.isActive);
+  detailButtons.forEach((button) => {
+    const direction = button.dataset.detailDirection;
+    button.disabled =
+      !state.isActive ||
+      (direction === "prev" && currentDetailIndex <= 0) ||
+      (direction === "next" && currentDetailIndex >= state.slideCount - 1);
+  });
+}
+
+function scrollToDetailIndex(index, smooth = true) {
+  const state = getDetailScrollState();
+  if (!state || state.slideCount <= 1) return;
+
+  const nextIndex = clamp(index, 0, state.slideCount - 1);
+  const target = stage.offsetTop + (state.max * nextIndex) / (state.slideCount - 1);
+
+  isSnapping = true;
+  window.scrollTo({
+    top: target,
+    behavior: smooth && !reduceMotion.matches ? "smooth" : "auto",
+  });
+
+  window.setTimeout(() => {
+    isSnapping = false;
+    requestScrollEffectsUpdate();
+  }, smooth ? 420 : 0);
+}
+
+function scheduleDetailSnap(state) {
+  if (!state || !state.isActive || isSnapping || reduceMotion.matches) return;
+
+  window.clearTimeout(snapTimer);
+  snapTimer = window.setTimeout(() => {
+    const latestState = getDetailScrollState();
+    if (!latestState || !latestState.isActive) return;
+    scrollToDetailIndex(latestState.index);
+  }, 140);
+}
+
+function updateHorizontalScroll() {
+  const state = getDetailScrollState();
+  if (!state) {
+    detailControls?.classList.remove("is-visible");
+    return;
+  }
+
+  currentDetailIndex = state.index;
+  track.style.transform = `translate3d(${-state.distance * state.progress}px, 0, 0)`;
+  updateDetailControls(state);
+  scheduleDetailSnap(state);
 }
 
 function updateParallax() {
@@ -64,6 +129,13 @@ function requestScrollEffectsUpdate() {
   ticking = true;
   requestAnimationFrame(updateScrollEffects);
 }
+
+detailButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const direction = button.dataset.detailDirection === "next" ? 1 : -1;
+    scrollToDetailIndex(currentDetailIndex + direction);
+  });
+});
 
 cards.forEach((card) => {
   const video = card.querySelector("video");

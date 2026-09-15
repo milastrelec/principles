@@ -334,16 +334,17 @@ video {
   position: sticky;
   top: 0;
   display: flex;
-  width: 600vw;
+  width: max-content;
   height: 100svh;
   will-change: transform;
 }
 
 .detail-slide {
   position: relative;
-  width: 100vw;
+  width: calc(100vw + 2px);
   height: 100svh;
-  flex: 0 0 100vw;
+  flex: 0 0 calc(100vw + 2px);
+  margin-right: -2px;
   overflow: hidden;
 }
 
@@ -458,6 +459,45 @@ video {
 
 .detail-6 p {
   bottom: 50px;
+}
+
+
+.detail-controls {
+  position: fixed;
+  z-index: 12;
+  right: clamp(18px, 2.6vw, 50px);
+  bottom: clamp(18px, 2.6vw, 50px);
+  display: flex;
+  gap: 10px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 180ms ease;
+}
+
+.detail-controls.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.detail-control {
+  display: grid;
+  width: clamp(44px, 3.75vw, 72px);
+  height: clamp(44px, 3.75vw, 72px);
+  place-items: center;
+  border: 1px solid rgba(248, 246, 242, 0.72);
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.28);
+  color: #f8f6f2;
+  font-family: "Aeroport Mono", monospace;
+  font-size: clamp(20px, 1.8vw, 34px);
+  line-height: 1;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+}
+
+.detail-control:disabled {
+  opacity: 0.34;
+  cursor: default;
 }
 
 .faq {
@@ -738,9 +778,14 @@ details ul {
     transform: none !important;
   }
 
+  .detail-controls {
+    display: none;
+  }
+
   .detail-slide {
     width: 100%;
     min-height: 100svh;
+    margin-right: 0;
   }
 
 }
