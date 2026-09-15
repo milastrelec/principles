@@ -3,27 +3,12 @@ const track = document.querySelector(".horizontal-track");
 const cards = document.querySelectorAll(".principle-card");
 const parallaxPanels = document.querySelectorAll("[data-parallax]");
 const principlesOverview = document.querySelector(".principles-overview");
-const firstDetail = document.querySelector(".detail-1");
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
 let ticking = false;
 
 function clamp(value, min, max) {
   return Math.min(Math.max(value, min), max);
-}
-
-function updateDetailIntro(progress) {
-  if (!firstDetail || reduceMotion.matches) return;
-
-  const localProgress = clamp((progress + 0.08) / 0.2, 0, 1);
-  const eased = 1 - Math.pow(1 - localProgress, 3);
-  const enter = 1 - eased;
-
-  firstDetail.style.setProperty("--detail-enter", enter.toFixed(4));
-  firstDetail.style.setProperty("--detail-bg-x", `${(-42 * enter).toFixed(2)}px`);
-  firstDetail.style.setProperty("--detail-bg-y", `${(26 * enter).toFixed(2)}px`);
-  firstDetail.style.setProperty("--detail-title-y", `${(-72 * enter).toFixed(2)}px`);
-  firstDetail.style.setProperty("--detail-copy-y", `${(64 * enter).toFixed(2)}px`);
 }
 
 function updateHorizontalScroll() {
@@ -35,7 +20,6 @@ function updateHorizontalScroll() {
   const distance = track.scrollWidth - window.innerWidth;
 
   track.style.transform = `translate3d(${-distance * progress}px, 0, 0)`;
-  updateDetailIntro(progress);
 }
 
 function updateParallax() {

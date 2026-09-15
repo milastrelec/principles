@@ -333,11 +333,6 @@ video {
 }
 
 .detail-slide {
-  --detail-enter: 1;
-  --detail-bg-x: 0px;
-  --detail-bg-y: 0px;
-  --detail-title-y: 0px;
-  --detail-copy-y: 0px;
   position: relative;
   width: 100vw;
   height: 100svh;
@@ -424,22 +419,6 @@ video {
   width: 111.23vw;
   height: 111.67svh;
   object-fit: cover;
-  transform: translate3d(var(--detail-bg-x), var(--detail-bg-y), 0) scale(calc(1.02 + var(--detail-enter) * 0.08));
-  transform-origin: 50% 50%;
-  will-change: transform;
-}
-
-.detail-1 h2 {
-  opacity: calc(1 - var(--detail-enter));
-  transform: translate3d(0, var(--detail-title-y), 0);
-  will-change: transform, opacity;
-}
-
-.detail-1 p {
-  opacity: calc(1 - var(--detail-enter));
-  transform: translate3d(0, var(--detail-copy-y), 0);
-  will-change: transform, opacity;
-}
 
 .detail-1::after {
   display: none;
@@ -627,10 +606,7 @@ details ul {
   [data-parallax] .principle-grid,
   [data-parallax] .faq-inner,
   .hero-video,
-  .principles-overview.reveal-ready .principle-card,
-  .detail-1 > img,
-  .detail-1 h2,
-  .detail-1 p {
+  .principles-overview.reveal-ready .principle-card {
     transform: none !important;
     opacity: 1 !important;
     transition: none !important;
