@@ -477,7 +477,7 @@ video {
 }
 
 .faq-list {
-  padding-top: clamp(20px, 4.2vw, 80px);
+  padding-top: 0;
 }
 
 details {
@@ -607,7 +607,7 @@ details ul {
   }
 
   .faq-list {
-    padding-top: 64px;
+    padding-top: 0;
   }
 }
 
