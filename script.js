@@ -71,10 +71,7 @@ function updateDetailControlsVisibility() {
   if (!stage || !detailControls) return;
 
   const rect = stage.getBoundingClientRect();
-  const isVisible = isAdaptiveSlider()
-    ? rect.top < window.innerHeight && rect.bottom > 0
-    : rect.top <= 0 && rect.bottom >= window.innerHeight * 0.98;
-  detailControls.classList.toggle("is-visible", isVisible);
+  detailControls.classList.toggle("is-visible", rect.top < window.innerHeight * 0.8 && rect.bottom > window.innerHeight * 0.35);
 }
 
 function updateHorizontalScroll() {

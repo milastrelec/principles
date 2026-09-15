@@ -457,32 +457,28 @@ video {
 }
 
 .detail-controls {
-  position: sticky;
-  top: 0;
+  position: fixed;
+  right: 32px;
+  bottom: 32px;
   z-index: 30;
   display: flex;
   width: max-content;
-  height: 100svh;
-  align-items: flex-end;
+  align-items: center;
   gap: 14px;
-  margin: 0 32px -100svh auto;
-  padding-bottom: 32px;
+  margin: 0;
+  opacity: 0;
+  pointer-events: none;
   color: #fff;
   font-family: "Aeroport Mono", monospace;
   font-size: clamp(14px, 1.05vw, 18px);
   line-height: 1;
   letter-spacing: 0;
   mix-blend-mode: difference;
-  opacity: 0;
-  pointer-events: none;
+  transition: opacity 180ms ease;
 }
 
 .detail-controls.is-visible {
   opacity: 1;
-}
-
-.detail-controls.is-visible .detail-control,
-.detail-controls.is-visible .detail-counter {
   pointer-events: auto;
 }
 
@@ -763,14 +759,9 @@ details ul {
   }
 
   .detail-controls {
-    position: absolute;
     right: 18px;
     bottom: 20px;
-    top: auto;
-    height: auto;
     gap: 10px;
-    margin: 0;
-    padding-bottom: 0;
     font-size: 14px;
   }
 
