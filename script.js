@@ -3,24 +3,95 @@ const track = document.querySelector(".horizontal-track");
 const cards = document.querySelectorAll(".principle-card");
 const parallaxPanels = document.querySelectorAll("[data-parallax]");
 const principlesOverview = document.querySelector(".principles-overview");
+const detailSlides = document.querySelectorAll(".detail-slide");
+const detailPrev = document.querySelector(".detail-control-prev");
+const detailNext = document.querySelector(".detail-control-next");
+const detailCounter = document.querySelector(".detail-counter");
+const detailControls = document.querySelector(".detail-controls");
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 const canHover = window.matchMedia("(hover: hover) and (pointer: fine)");
 
 let ticking = false;
+let currentDetailIndex = 0;
 
 function clamp(value, min, max) {
   return Math.min(Math.max(value, min), max);
 }
 
-function updateHorizontalScroll() {
-  if (!stage || !track || window.matchMedia("(max-width: 560px)").matches) return;
+function isAdaptiveSlider() {
+  return window.matchMedia("(max-width: 900px)").matches;
+}
+
+function setDetailIndex(index) {
+  if (!detailSlides.length) return;
+
+  currentDetailIndex = clamp(index, 0, detailSlides.length - 1);
+  if (detailCounter) {
+    detailCounter.textContent = `${String(currentDetailIndex + 1).padStart(2, "0")} / ${String(detailSlides.length).padStart(2, "0")}`;
+  }
+
+  detailPrev?.toggleAttribute("disabled", currentDetailIndex === 0);
+  detailNext?.toggleAttribute("disabled", currentDetailIndex === detailSlides.length - 1);
+}
+
+function getDesktopDetailIndex() {
+  if (!stage || !detailSlides.length) return 0;
 
   const rect = stage.getBoundingClientRect();
   const max = stage.offsetHeight - window.innerHeight;
-  const progress = clamp(-rect.top / max, 0, 1);
+  const progress = max > 0 ? clamp(-rect.top / max, 0, 1) : 0;
+  return Math.round(progress * (detailSlides.length - 1));
+}
+
+function getAdaptiveDetailIndex() {
+  if (!track || !detailSlides.length) return 0;
+
+  const slideWidth = track.clientWidth || 1;
+  return Math.round(track.scrollLeft / slideWidth);
+}
+
+function goToDetailSlide(index) {
+  if (!stage || !track || !detailSlides.length) return;
+
+  const nextIndex = clamp(index, 0, detailSlides.length - 1);
+
+  if (isAdaptiveSlider()) {
+    track.scrollTo({ left: nextIndex * track.clientWidth, behavior: reduceMotion.matches ? "auto" : "smooth" });
+    setDetailIndex(nextIndex);
+    return;
+  }
+
+  const max = stage.offsetHeight - window.innerHeight;
+  const target = stage.offsetTop + (max * nextIndex) / (detailSlides.length - 1);
+  window.scrollTo({ top: target, behavior: reduceMotion.matches ? "auto" : "smooth" });
+  setDetailIndex(nextIndex);
+}
+
+function updateDetailControlsVisibility() {
+  if (!stage || !detailControls) return;
+
+  const rect = stage.getBoundingClientRect();
+  detailControls.classList.toggle("is-visible", rect.top < window.innerHeight * 0.8 && rect.bottom > window.innerHeight * 0.35);
+}
+
+function updateHorizontalScroll() {
+  if (!stage || !track) return;
+
+  updateDetailControlsVisibility();
+
+  if (isAdaptiveSlider()) {
+    track.style.transform = "none";
+    setDetailIndex(getAdaptiveDetailIndex());
+    return;
+  }
+
+  const rect = stage.getBoundingClientRect();
+  const max = stage.offsetHeight - window.innerHeight;
+  const progress = max > 0 ? clamp(-rect.top / max, 0, 1) : 0;
   const distance = track.scrollWidth - window.innerWidth;
 
   track.style.transform = `translate3d(${-distance * progress}px, 0, 0)`;
+  setDetailIndex(Math.round(progress * (detailSlides.length - 1)));
 }
 
 function updateParallax() {
@@ -128,7 +199,14 @@ if (principlesOverview && !reduceMotion.matches) {
   overviewObserver.observe(principlesOverview);
 }
 
+detailPrev?.addEventListener("click", () => goToDetailSlide(currentDetailIndex - 1));
+detailNext?.addEventListener("click", () => goToDetailSlide(currentDetailIndex + 1));
+track?.addEventListener("scroll", () => {
+  if (isAdaptiveSlider()) requestScrollEffectsUpdate();
+}, { passive: true });
+
 window.addEventListener("scroll", requestScrollEffectsUpdate, { passive: true });
 window.addEventListener("resize", requestScrollEffectsUpdate);
 reduceMotion.addEventListener("change", requestScrollEffectsUpdate);
+setDetailIndex(0);
 updateScrollEffects();
