@@ -260,9 +260,10 @@ video {
 .emblem {
   position: relative;
   width: min(20.02vw, 383px);
-  height: min(18.769vw, 361px);
+  aspect-ratio: 1;
+  height: auto;
   min-width: 220px;
-  min-height: 234px;
+  min-height: 0;
   overflow: hidden;
   background: transparent;
 }
@@ -576,22 +577,57 @@ details ul {
     bottom: 30px;
   }
 
+  .principles-overview {
+    min-height: auto;
+    padding-top: 40px;
+    padding-bottom: 64px;
+  }
+
   .principle-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     column-gap: 18px;
-    row-gap: 34px;
-    margin-top: 72px;
+    row-gap: 44px;
+    margin-top: 0;
   }
 
-  .emblem {
-    width: min(60.06vw, calc((100vw - 54px) / 2));
-    height: min(60.06vw, calc((100vw - 54px) / 2));
+  .emblem,
+  .principle-card:nth-child(1) .emblem,
+  .principle-card:nth-child(3) .emblem,
+  .principle-card:nth-child(4) .emblem,
+  .principle-card:nth-child(5) .emblem,
+  .principle-card:nth-child(6) .emblem {
+    width: min(42vw, calc((100vw - 54px) / 2), 300px);
+    height: auto;
     min-width: 0;
     min-height: 0;
   }
 
+  .principles-overview.reveal-ready.is-visible .principle-card {
+    transition-duration: 1600ms;
+  }
+
+  .principles-overview.reveal-ready.is-visible .principle-card:nth-child(2) {
+    transition-delay: 140ms;
+  }
+
+  .principles-overview.reveal-ready.is-visible .principle-card:nth-child(3) {
+    transition-delay: 280ms;
+  }
+
+  .principles-overview.reveal-ready.is-visible .principle-card:nth-child(4) {
+    transition-delay: 420ms;
+  }
+
+  .principles-overview.reveal-ready.is-visible .principle-card:nth-child(5) {
+    transition-delay: 560ms;
+  }
+
+  .principles-overview.reveal-ready.is-visible .principle-card:nth-child(6) {
+    transition-delay: 700ms;
+  }
+
   .principle-card h2 {
-    font-size: clamp(19px, 5vw, 28px);
+    font-size: clamp(19px, 4.2vw, 28px);
   }
 
   .detail-slide h2 {
@@ -612,13 +648,52 @@ details ul {
 }
 
 @media (max-width: 560px) {
-  .principle-grid {
-    grid-template-columns: 1fr;
+  .principles-overview {
+    padding-top: 34px;
+    padding-bottom: 58px;
   }
 
-  .emblem {
-    width: min(97.24vw, calc(100vw - 36px));
-    height: min(97.24vw, calc(100vw - 36px));
+  .principle-grid {
+    grid-template-columns: 1fr;
+    row-gap: 46px;
+  }
+
+  .emblem,
+  .principle-card:nth-child(1) .emblem,
+  .principle-card:nth-child(3) .emblem,
+  .principle-card:nth-child(4) .emblem,
+  .principle-card:nth-child(5) .emblem,
+  .principle-card:nth-child(6) .emblem {
+    width: min(74vw, 320px);
+    height: auto;
+  }
+
+  .principles-overview.reveal-ready.is-visible .principle-card {
+    transition-duration: 1200ms;
+  }
+
+  .principles-overview.reveal-ready.is-visible .principle-card:nth-child(2) {
+    transition-delay: 100ms;
+  }
+
+  .principles-overview.reveal-ready.is-visible .principle-card:nth-child(3) {
+    transition-delay: 200ms;
+  }
+
+  .principles-overview.reveal-ready.is-visible .principle-card:nth-child(4) {
+    transition-delay: 300ms;
+  }
+
+  .principles-overview.reveal-ready.is-visible .principle-card:nth-child(5) {
+    transition-delay: 400ms;
+  }
+
+  .principles-overview.reveal-ready.is-visible .principle-card:nth-child(6) {
+    transition-delay: 500ms;
+  }
+
+  .principle-card h2 {
+    font-size: clamp(20px, 5.6vw, 26px);
   }
 
   .horizontal-stage {
