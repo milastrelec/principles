@@ -669,7 +669,7 @@ details ul {
   :root {
     --type-display: clamp(48px, 12.8vw, 72px);
     --type-mono: clamp(15px, 3.2vw, 18px);
-    --type-principle: clamp(11px, 2.45vw, 14px);
+    --type-principle: clamp(13px, 2.85vw, 16px);
     --type-faq-question: clamp(18px, 3.9vw, 22px);
     --type-faq-body: clamp(15px, 2.9vw, 16px);
   }
@@ -681,15 +681,8 @@ details ul {
 
   .principle-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    column-gap: 20px;
-    row-gap: 28px;
-  }
-
-  .principle-card {
-    display: flex;
-    min-width: 0;
-    flex-direction: column;
-    align-items: flex-start;
+    column-gap: 16px;
+    row-gap: 38px;
   }
 
   .emblem,
@@ -699,19 +692,8 @@ details ul {
   .principle-card:nth-child(5) .emblem,
   .principle-card:nth-child(6) .emblem {
     width: 100%;
-    max-width: 136px;
+    max-width: 184px;
     height: auto;
-  }
-
-  .emblem video {
-    display: none;
-  }
-
-  .principle-card h2 {
-    margin-top: 10px;
-    max-width: 100%;
-    overflow-wrap: normal;
-    line-height: 1.18;
   }
 
   .principles-overview.reveal-ready.is-visible .principle-card {
