@@ -168,8 +168,10 @@ video {
   position: relative;
   z-index: 1;
   margin: 0;
+  left: 50%;
   width: calc(100vw - 84px);
   max-width: 1828px;
+  transform: translateX(-50%);
   color: #f8f6f2;
   font-family: "Panama Monospace", monospace;
   font-size: var(--type-display);
@@ -577,6 +579,10 @@ details ul {
 
   .site-header {
     padding: 18px;
+  }
+
+  .intro h1 {
+    width: calc(100vw - 36px);
   }
 
   .panel-inner,
