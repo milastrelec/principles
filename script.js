@@ -26,7 +26,7 @@ function getDetailScrollState() {
   const distance = track.scrollWidth - window.innerWidth;
   const slideCount = detailSlides.length || 1;
   const index = Math.round(progress * (slideCount - 1));
-  const isActive = rect.top < window.innerHeight && rect.bottom > 0;
+  const isActive = rect.top <= 1 && rect.bottom >= window.innerHeight - 1;
 
   return { rect, max, progress, distance, slideCount, index, isActive };
 }
