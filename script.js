@@ -1,3 +1,6 @@
+const hero = document.querySelector(".hero");
+const heroVideo = document.querySelector(".hero-video");
+const intro = document.querySelector(".intro");
 const stage = document.querySelector(".horizontal-stage");
 const track = document.querySelector(".horizontal-track");
 const cards = document.querySelectorAll(".principle-card");
@@ -116,6 +119,16 @@ function updateParallax() {
   });
 }
 
+function scrollToIntroAfterHeroVideo() {
+  if (!hero || !intro) return;
+
+  const heroBottom = hero.offsetTop + hero.offsetHeight;
+  const stillViewingHero = window.scrollY < heroBottom - window.innerHeight * 0.28;
+  if (!stillViewingHero) return;
+
+  intro.scrollIntoView({ behavior: reduceMotion.matches ? "auto" : "smooth", block: "start" });
+}
+
 function updateScrollEffects() {
   updateHorizontalScroll();
   updateParallax();
@@ -127,6 +140,8 @@ function requestScrollEffectsUpdate() {
   ticking = true;
   requestAnimationFrame(updateScrollEffects);
 }
+
+heroVideo?.addEventListener("ended", scrollToIntroAfterHeroVideo, { once: true });
 
 cards.forEach((card) => {
   const video = card.querySelector("video");
