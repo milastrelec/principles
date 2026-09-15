@@ -119,6 +119,44 @@ function updateParallax() {
   });
 }
 
+
+function loadHeroVideo() {
+  if (!heroVideo || heroVideo.dataset.loaded === "true") return;
+
+  const source = heroVideo.dataset.src;
+  if (!source) return;
+
+  heroVideo.hidden = false;
+  heroVideo.src = source;
+  heroVideo.dataset.loaded = "true";
+  heroVideo.addEventListener("canplay", () => heroVideo.classList.add("is-ready"), { once: true });
+  heroVideo.load();
+  heroVideo.play().catch(() => {});
+}
+
+function scheduleHeroVideoLoad() {
+  if (reduceMotion.matches) return;
+
+  const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+  const slowConnection = connection?.saveData || ["slow-2g", "2g"].includes(connection?.effectiveType);
+  if (slowConnection) return;
+
+  const run = () => {
+    const startLoading = () => window.setTimeout(loadHeroVideo, 1600);
+    if ("requestIdleCallback" in window) {
+      window.requestIdleCallback(startLoading, { timeout: 2200 });
+    } else {
+      startLoading();
+    }
+  };
+
+  if (document.readyState === "complete") {
+    run();
+  } else {
+    window.addEventListener("load", run, { once: true });
+  }
+}
+
 function scrollToIntroAfterHeroVideo() {
   if (!hero || !intro) return;
 
@@ -142,6 +180,7 @@ function requestScrollEffectsUpdate() {
 }
 
 heroVideo?.addEventListener("ended", scrollToIntroAfterHeroVideo, { once: true });
+scheduleHeroVideoLoad();
 
 cards.forEach((card) => {
   const video = card.querySelector("video");

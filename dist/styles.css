@@ -139,14 +139,29 @@ video {
 }
 
 .hero {
+  position: relative;
   display: grid;
   place-items: stretch;
+  min-height: 100svh;
+  overflow: hidden;
+}
+
+.hero-poster,
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .hero-video {
-  width: 100%;
-  height: 100svh;
-  object-fit: cover;
+  opacity: 0;
+  transition: opacity 600ms ease;
+}
+
+.hero-video.is-ready {
+  opacity: 1;
 }
 
 .intro {
@@ -618,6 +633,7 @@ details ul {
   [data-parallax] .principle-grid,
   [data-parallax] .faq-inner,
   .hero-video,
+  .hero-poster,
   .principles-overview.reveal-ready .principle-card {
     transform: none !important;
     opacity: 1 !important;
