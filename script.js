@@ -24,14 +24,22 @@ function updateDetailSlides(progress) {
     const presence = 1 - clamp(Math.abs(delta), 0, 1);
     const easedPresence = 1 - Math.pow(1 - presence, 3);
 
+    const absence = 1 - easedPresence;
+
     slide.style.setProperty("--slide-presence", easedPresence.toFixed(4));
     slide.style.setProperty("--slide-drift", clampedDelta.toFixed(4));
-    slide.style.setProperty("--slide-bg-x", `${(-70 * clampedDelta).toFixed(2)}px`);
-    slide.style.setProperty("--slide-bg-y", `${(18 * Math.abs(clampedDelta)).toFixed(2)}px`);
-    slide.style.setProperty("--slide-title-x", `${(110 * clampedDelta).toFixed(2)}px`);
-    slide.style.setProperty("--slide-title-y", `${(-52 * Math.abs(clampedDelta)).toFixed(2)}px`);
-    slide.style.setProperty("--slide-copy-x", `${(-74 * clampedDelta).toFixed(2)}px`);
-    slide.style.setProperty("--slide-copy-y", `${(54 * Math.abs(clampedDelta)).toFixed(2)}px`);
+    slide.style.setProperty("--slide-bg-x", `${(-132 * clampedDelta).toFixed(2)}px`);
+    slide.style.setProperty("--slide-bg-y", `${(34 * Math.abs(clampedDelta)).toFixed(2)}px`);
+    slide.style.setProperty("--slide-bg-scale", (1.02 + absence * 0.16).toFixed(4));
+    slide.style.setProperty("--slide-title-x", `${(170 * clampedDelta).toFixed(2)}px`);
+    slide.style.setProperty("--slide-title-y", `${(-96 * Math.abs(clampedDelta)).toFixed(2)}px`);
+    slide.style.setProperty("--slide-title-scale", (0.9 + easedPresence * 0.1).toFixed(4));
+    slide.style.setProperty("--slide-title-opacity", (0.04 + easedPresence * 0.96).toFixed(4));
+    slide.style.setProperty("--slide-copy-x", `${(-124 * clampedDelta).toFixed(2)}px`);
+    slide.style.setProperty("--slide-copy-y", `${(92 * Math.abs(clampedDelta)).toFixed(2)}px`);
+    slide.style.setProperty("--slide-copy-opacity", (0.02 + easedPresence * 0.98).toFixed(4));
+    slide.style.setProperty("--slide-overlay-alpha", (0.3 - easedPresence * 0.2).toFixed(4));
+    slide.style.setProperty("--slide-overlay-opacity", (0.25 + easedPresence * 0.65).toFixed(4));
   });
 }
 
