@@ -118,7 +118,7 @@ if (principlesOverview && !reduceMotion.matches) {
       principlesOverview.classList.add("is-visible");
       window.setTimeout(() => {
         playSecondPrincipleEasterEgg();
-        window.setInterval(playSecondPrincipleEasterEgg, 180000);
+        window.setInterval(playSecondPrincipleEasterEgg, 60000);
       }, 4600);
       observer.disconnect();
     },
