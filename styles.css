@@ -532,7 +532,7 @@ details ul {
   padding-left: 1.1em;
 }
 
-@media (hover: none), (pointer: coarse) {
+@media (max-width: 900px), (hover: none), (pointer: coarse) {
   .emblem video {
     display: none;
   }
