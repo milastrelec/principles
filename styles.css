@@ -426,9 +426,7 @@ video {
 }
 
 .detail-1 .detail-shade.top {
-  top: -47.59svh;
-  height: 86.76svh;
-  background: linear-gradient(180deg, #f8f6f2 0%, rgba(248, 246, 242, 0) 100%);
+  display: none;
 }
 
 .detail-2 > img {
