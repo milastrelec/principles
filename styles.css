@@ -419,6 +419,7 @@ video {
   width: 111.23vw;
   height: 111.67svh;
   object-fit: cover;
+}
 
 .detail-1::after {
   display: none;
