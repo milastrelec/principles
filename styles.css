@@ -29,6 +29,11 @@
   --ink: #090909;
   --muted: rgba(9, 9, 9, 0.62);
   --edge: rgba(9, 9, 9, 0.16);
+  --type-display: clamp(72px, 10.833vw, 208px);
+  --type-mono: clamp(22px, 1.667vw, 32px);
+  --type-principle: var(--type-mono);
+  --type-faq-question: clamp(24px, 2.1vw, 40px);
+  --type-faq-body: clamp(18px, 1.45vw, 28px);
   --header: clamp(42px, 9.7vw, 187px);
   --body: clamp(20px, 2.05vw, 40px);
 }
@@ -167,7 +172,7 @@ video {
   max-width: 1828px;
   color: #f8f6f2;
   font-family: "Panama Monospace", monospace;
-  font-size: clamp(72px, 10.833vw, 208px);
+  font-size: var(--type-display);
   font-weight: 400;
   line-height: 0.9;
   letter-spacing: -0.04em;
@@ -184,7 +189,7 @@ video {
   margin: 0;
   color: #fff;
   font-family: "Aeroport Mono", monospace;
-  font-size: clamp(22px, 1.667vw, 32px);
+  font-size: var(--type-mono);
   line-height: 1.25;
   letter-spacing: 0;
   text-align: center;
@@ -201,7 +206,7 @@ video {
 .overview-heading {
   font-family: "Aeroport Mono", "Aeroport", Arial, sans-serif;
   color: #fff;
-  font-size: clamp(24px, 2.083vw, 40px);
+  font-size: var(--type-faq-question);
   font-weight: 400;
   line-height: 1.2;
   letter-spacing: 0;
@@ -312,7 +317,7 @@ video {
   margin: clamp(16px, 1.5vw, 28px) 0 0;
   color: #fff;
   font-family: "Aeroport Mono", monospace;
-  font-size: clamp(22px, 1.667vw, 32px);
+  font-size: var(--type-principle);
   font-weight: 400;
   line-height: 1.25;
   letter-spacing: 0;
@@ -364,7 +369,7 @@ video {
   right: 50px;
   color: #f8f6f2;
   font-family: "Panama Monospace", monospace;
-  font-size: clamp(72px, 10.833vw, 208px);
+  font-size: var(--type-display);
   line-height: 0.9;
   letter-spacing: -0.05em;
   text-align: center;
@@ -377,7 +382,7 @@ video {
   bottom: 50px;
   color: #fff;
   font-family: "Aeroport Mono", monospace;
-  font-size: clamp(22px, 1.667vw, 32px);
+  font-size: var(--type-mono);
   line-height: 1.25;
   letter-spacing: 0;
   text-align: center;
@@ -470,7 +475,7 @@ video {
 .faq h2 {
   margin: 0;
   font-family: "Panama Monospace", monospace;
-  font-size: clamp(72px, 10.833vw, 208px);
+  font-size: var(--type-display);
   font-weight: 400;
   line-height: 0.9;
   letter-spacing: -0.05em;
@@ -493,7 +498,7 @@ details:last-child {
 summary {
   cursor: pointer;
   list-style: none;
-  font-size: clamp(24px, 2.1vw, 40px);
+  font-size: var(--type-faq-question);
   line-height: 1.05;
 }
 
@@ -514,7 +519,7 @@ details[open] summary::after {
 details p,
 details li {
   color: var(--muted);
-  font-size: clamp(18px, 1.45vw, 28px);
+  font-size: var(--type-faq-body);
   line-height: 1.25;
 }
 
@@ -550,6 +555,11 @@ details ul {
 
 @media (max-width: 900px) {
   :root {
+    --type-display: clamp(72px, 10.8vw, 98px);
+    --type-mono: clamp(18px, 2.45vw, 22px);
+    --type-principle: clamp(16px, 2.45vw, 22px);
+    --type-faq-question: clamp(22px, 2.7vw, 24px);
+    --type-faq-body: clamp(16px, 2vw, 18px);
     --header: clamp(56px, 18vw, 120px);
     --body: clamp(20px, 6.1vw, 34px);
   }
@@ -567,7 +577,6 @@ details ul {
   .intro-logo {
     top: 35svh;
     width: 86vw;
-    font-size: clamp(90px, 31vw, 170px);
   }
 
   .intro p,
@@ -626,9 +635,6 @@ details ul {
     transition-delay: 700ms;
   }
 
-  .principle-card h2 {
-    font-size: clamp(19px, 4.2vw, 28px);
-  }
 
   .detail-slide h2 {
     left: 18px;
@@ -648,6 +654,14 @@ details ul {
 }
 
 @media (max-width: 560px) {
+  :root {
+    --type-display: clamp(48px, 12.8vw, 72px);
+    --type-mono: clamp(15px, 3.2vw, 18px);
+    --type-principle: clamp(13px, 2.85vw, 16px);
+    --type-faq-question: clamp(18px, 3.9vw, 22px);
+    --type-faq-body: clamp(15px, 2.9vw, 16px);
+  }
+
   .principles-overview {
     padding-top: 34px;
     padding-bottom: 58px;
@@ -693,9 +707,6 @@ details ul {
     transition-delay: 500ms;
   }
 
-  .principle-card h2 {
-    font-size: clamp(20px, 5.6vw, 26px);
-  }
 
   .horizontal-stage {
     height: auto;
@@ -714,7 +725,4 @@ details ul {
     min-height: 100svh;
   }
 
-  .detail-slide p {
-    font-size: clamp(19px, 5.8vw, 28px);
-  }
 }
