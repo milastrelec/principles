@@ -532,6 +532,17 @@ details ul {
   padding-left: 1.1em;
 }
 
+@media (hover: none), (pointer: coarse) {
+  .emblem video {
+    display: none;
+  }
+
+  .principle-card:hover video,
+  .principle-card:focus-within video {
+    opacity: 0;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -605,7 +616,8 @@ details ul {
   .principle-card:nth-child(4) .emblem,
   .principle-card:nth-child(5) .emblem,
   .principle-card:nth-child(6) .emblem {
-    width: min(42vw, calc((100vw - 54px) / 2), 300px);
+    width: 100%;
+    max-width: 300px;
     height: auto;
     min-width: 0;
     min-height: 0;
@@ -679,7 +691,8 @@ details ul {
   .principle-card:nth-child(4) .emblem,
   .principle-card:nth-child(5) .emblem,
   .principle-card:nth-child(6) .emblem {
-    width: min(42vw, calc((100vw - 52px) / 2));
+    width: 100%;
+    max-width: 184px;
     height: auto;
   }
 
