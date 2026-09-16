@@ -111,7 +111,9 @@ function updateParallax() {
 
     if (!media) return;
 
-    if (media.classList.contains("intro-logo")) {
+    if (media.classList.contains("intro-logo-thread")) {
+      media.style.transform = `translate3d(-50%, calc(-50% + ${mediaOffset.toFixed(2)}px), 0)`;
+    } else if (media.classList.contains("intro-logo")) {
       media.style.transform = `translate3d(-50%, ${mediaOffset.toFixed(2)}px, 0)`;
     } else {
       media.style.transform = `translate3d(0, ${mediaOffset.toFixed(2)}px, 0) scale(1.06)`;
