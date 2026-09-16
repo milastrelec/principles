@@ -181,7 +181,7 @@ video {
 
 .intro-logo-thread {
   top: 0;
-  width: min(88.78vw, 1705px);
+  width: min(71.9vw, 1382px);
 }
 
 .intro h1 {
@@ -678,7 +678,7 @@ details ul {
 
   .intro-logo-thread {
     top: 0;
-    width: 154.8vw;
+    width: 125.4vw;
   }
 
   .intro p,
