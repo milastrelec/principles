@@ -416,11 +416,61 @@ video {
   background: #141413;
 }
 
-.detail-1 > img {
-  inset: 0;
-  width: 100%;
-  height: 100%;
+.detail-1 > .detail-1-bg {
+  z-index: 0;
+  top: calc(50% + 15.5px);
+  left: 50%;
+  width: 123.13%;
+  height: 123.61%;
+  transform: translate(-50%, -50%);
   object-fit: cover;
+}
+
+.detail-1-vignette {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 88.6% 88.6% at 50% 48.33%,
+    transparent 34.61%,
+    #000 100%
+  );
+  pointer-events: none;
+}
+
+.detail-1 h2 {
+  left: 50%;
+  right: auto;
+  width: calc(100vw - 92px);
+  max-width: 1828px;
+  transform: translateX(-50%);
+}
+
+.detail-1-emblem {
+  position: absolute;
+  z-index: 4;
+  top: calc(50% + 40px);
+  left: 50%;
+  width: min(26.99vw, 518px);
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+}
+
+.detail-1-emblem img {
+  position: absolute;
+  inset: -8.25% -13.75% -19.25%;
+  width: 127.5%;
+  height: 127.5%;
+  object-fit: contain;
+}
+
+.detail-1 p {
+  top: 76.852%;
+  bottom: auto;
+  left: 50%;
+  right: auto;
+  width: min(62.813vw, 1206px);
+  transform: translateX(-50%);
 }
 
 .detail-2 > img {
@@ -783,6 +833,26 @@ details ul {
     left: 18px;
     right: 18px;
     top: 64px;
+  }
+
+  .detail-1 h2 {
+    left: 50%;
+    right: auto;
+    width: calc(100vw - 36px);
+  }
+
+  .detail-1-emblem {
+    top: 46%;
+    width: min(55.44vw, 400px);
+  }
+
+  .detail-1 p {
+    top: auto;
+    bottom: 74px;
+    left: 18px;
+    right: 18px;
+    width: auto;
+    transform: none;
   }
 
   .detail-controls {
