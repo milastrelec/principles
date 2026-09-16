@@ -605,16 +605,58 @@ video {
   transform: translateX(-50%);
 }
 
-.detail-4 > img {
-  inset: 0;
-  width: 100%;
-  height: 100%;
+.detail-4 {
+  background: #141413;
+}
+
+.detail-4 > .detail-4-bg {
+  z-index: 0;
+  top: 50%;
+  left: 50%;
+  width: min(149.583vw, 2872px);
+  height: auto;
+  aspect-ratio: 2872 / 1926;
+  transform: translate(-50%, -50%);
   object-fit: cover;
 }
 
+.detail-4-vignette {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 87.78% 87.78% at 50% 48.33%,
+    transparent 36.809%,
+    #000 100%
+  );
+  pointer-events: none;
+}
+
+.detail-4-emblem {
+  position: absolute;
+  z-index: 4;
+  top: calc(50% + 64.5px);
+  left: calc(50% - 0.5px);
+  width: min(36.927vw, 709px);
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  filter: drop-shadow(0 31.836px 39.796px rgba(0, 0, 0, 0.6));
+}
+
+.detail-4-emblem img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
 .detail-4 p {
-  left: 18.958vw;
-  right: 18.958vw;
+  top: 84.259%;
+  bottom: auto;
+  left: calc(50% + 3.09px);
+  right: auto;
+  width: min(62.405vw, 1198.175px);
+  transform: translateX(-50%);
 }
 
 .detail-5 > img {
@@ -970,6 +1012,11 @@ details ul {
     width: min(55.44vw, 400px);
   }
 
+  .detail-4-emblem {
+    top: 48%;
+    width: min(73.85vw, 500px);
+  }
+
   .detail-2 > .detail-2-bg {
     top: 0;
     left: 0;
@@ -981,6 +1028,16 @@ details ul {
   }
 
   .detail-3 > .detail-3-bg {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    aspect-ratio: auto;
+    transform: none;
+    object-fit: cover;
+  }
+
+  .detail-4 > .detail-4-bg {
     top: 0;
     left: 0;
     width: 100%;
@@ -1024,6 +1081,15 @@ details ul {
   }
 
   .detail-3 p {
+    top: auto;
+    bottom: 74px;
+    left: 18px;
+    right: 18px;
+    width: auto;
+    transform: none;
+  }
+
+  .detail-4 p {
     top: auto;
     bottom: 74px;
     left: 18px;
