@@ -8,7 +8,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css?v=video-dialog" />
   </head>
   <body>
     <main>
@@ -30,6 +30,7 @@
             Это принципы Центра дизайна Авито. Они описывают наш взгляд на работу, продукт,
             пользователей и на самих себя. Благодаря общим принципам мы мыслим и действуем схожим
             образом, создаём лучший продукт, ценим друг друга и получаем удовольствие от работы.
+            <a class="intro-video-link" href="video/principles-onboarding.mp4" data-open-video aria-haspopup="dialog" aria-controls="onboarding-dialog">Смотреть видео <span aria-hidden="true">↗</span></a>
           </p>
         </div>
       </section>
@@ -204,6 +205,7 @@
                 продукт, пользователей, работу и на самих себя и помогают нам мыслить и действовать
                 схожим образом.
               </p>
+              <a class="intro-video-link faq-video-link" href="video/principles-onboarding.mp4" data-open-video aria-haspopup="dialog" aria-controls="onboarding-dialog">Смотреть видео <span aria-hidden="true">↗</span></a>
             </details>
             <details>
               <summary>Зачем нам принципы, если у Авито уже есть ценности?</summary>
@@ -303,6 +305,16 @@
       </section>
     </main>
 
-    <script src="script.js"></script>
+    <dialog class="video-dialog" id="onboarding-dialog" aria-label="Видеоонбординг в принципы ADT">
+      <div class="video-dialog-toolbar">
+        <button class="video-dialog-close" type="button" aria-label="Закрыть видео" autofocus>×</button>
+      </div>
+      <video class="onboarding-video" controls playsinline preload="none" poster="assets/optimized/hero-poster.jpg" aria-label="Видеоонбординг в принципы Центра дизайна Авито">
+        <source src="video/principles-onboarding.mp4" type="video/mp4" />
+        Ваш браузер не поддерживает видео. <a href="video/principles-onboarding.mp4">Скачать запись</a>.
+      </video>
+    </dialog>
+
+    <script src="script.js?v=video-dialog"></script>
   </body>
 </html>

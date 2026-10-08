@@ -229,3 +229,37 @@ window.addEventListener("resize", requestScrollEffectsUpdate);
 reduceMotion.addEventListener("change", requestScrollEffectsUpdate);
 setDetailIndex(0);
 updateScrollEffects();
+
+
+const onboardingVideo = document.querySelector(".onboarding-video");
+const videoDialog = document.querySelector(".video-dialog");
+const videoClose = document.querySelector(".video-dialog-close");
+let videoTrigger = null;
+
+if (videoDialog && onboardingVideo && videoClose) {
+  document.querySelectorAll("[data-open-video]").forEach((link) => {
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      videoTrigger = link;
+      videoDialog.showModal();
+      document.documentElement.classList.add("video-dialog-open");
+      onboardingVideo.play().catch(() => {
+        // Native controls remain available if the browser blocks playback.
+      });
+    });
+  });
+  videoClose.addEventListener("click", () => videoDialog.close());
+  videoDialog.addEventListener("click", (event) => {
+    const rect = videoDialog.getBoundingClientRect();
+    if (event.target === videoDialog &&
+        (event.clientX < rect.left || event.clientX > rect.right ||
+         event.clientY < rect.top || event.clientY > rect.bottom)) {
+      videoDialog.close();
+    }
+  });
+  videoDialog.addEventListener("close", () => {
+    onboardingVideo.pause();
+    document.documentElement.classList.remove("video-dialog-open");
+    videoTrigger?.focus({ preventScroll: true });
+  });
+}
